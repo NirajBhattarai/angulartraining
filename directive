@@ -1,0 +1,55 @@
+There are three kinds of directives in Angular:
+
+Components—directives with a template.
+
+Structural directives—change the DOM layout by adding and removing DOM elements.
+Attribute directives—change the appearance or behavior of an element, component, or another directive
+
+##Structural Directive
+
+Structural Directives change the structure of the view. Two examples are NgFor and NgIf
+
+Structural directives are responsible for HTML layout. They shape or reshape the DOM's structure, typically by adding, removing, or manipulating elements.
+
+Structural directives are easy to recognize. An asterisk (*) precedes the directive attribute name as in this example.
+
+<div *ngIf="hero" class="name">{{hero.name}}</div>
+
+
+div *ngIf="hero" class="name">{{hero.name}}</div>
+
+<ul>
+  <li *ngFor="let hero of heroes">{{hero.name}}</li>
+</ul>
+
+<div [ngSwitch]="hero?.emotion">
+  <app-happy-hero    *ngSwitchCase="'happy'"    [hero]="hero"></app-happy-hero>
+  <app-sad-hero      *ngSwitchCase="'sad'"      [hero]="hero"></app-sad-hero>
+  <app-confused-hero *ngSwitchCase="'confused'" [hero]="hero"></app-confused-hero>
+  <app-unknown-hero  *ngSwitchDefault           [hero]="hero"></app-unknown-hero>
+</div>
+
+
+A structural directive that conditionally includes a template based on the value of an expression coerced to Boolean. When the expression evaluates to true, Angular renders the template provided in a then clause, and when false or null, Angular renders the template provided in an optional else clause. The default template for the else clause is blank.
+
+
+<ng-template [ngIf]="condition"><div>Content to render when condition is
+true.</div></ng-template>
+
+
+
+
+############################################
+Renderer2
+
+###CreateElement
+Implement this callback to create an instance of the host element.
+
+const li = this.renderer.createElement('li');
+
+const text = this.renderer.createText('Text added');
+
+
+
+
+
